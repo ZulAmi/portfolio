@@ -1,0 +1,362 @@
+.hero {
+    position: relative;
+    min-height: 65vh;
+    /* Reduced height */
+    display: flex;
+    align-items: center;
+    padding: 40px 0;
+    background-color: #f8fafc;
+    overflow: hidden;
+}
+
+/* Subtle monochromatic background */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(#e5e9f0 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.5;
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    /* Reduced from 2rem */
+    align-items: center;
+}
+
+.hero-text {
+    animation: fadeIn 1s ease;
+}
+
+/* Fixed height container for typewriter to prevent layout shifts */
+.typewriter-container {
+    height: 3.5rem;
+    /* Set this to accommodate your largest text */
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: flex-start;
+}
+
+.typewriter-text {
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    color: #0f172a;
+    margin: 0;
+    /* Remove default margins */
+    min-height: 2.9rem;
+    /* Ensure consistent height */
+}
+
+.typewriter-name {
+    color: #2563eb;
+    position: relative;
+}
+
+.typewriter-name::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 4px;
+    width: 100%;
+    height: 6px;
+    background-color: rgba(37, 99, 235, 0.1);
+    z-index: -1;
+}
+
+.cursor {
+    display: inline-block;
+    width: 3px;
+    height: 1.2em;
+    background-color: #0f172a;
+    margin-left: 2px;
+    vertical-align: text-top;
+    position: relative;
+    top: 0.1em;
+}
+
+.cursor.blinking {
+    animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.hero-text h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+    color: #0f172a;
+    /* Darker text for better contrast */
+}
+
+/* Make sure the subtitle doesn't move */
+.hero-subtitle {
+    font-size: 1.4rem;
+    /* Smaller */
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 0.75rem;
+}
+
+.highlight {
+    color: #2563eb;
+    /* Vibrant blue for highlight */
+    position: relative;
+}
+
+/* Monochromatic highlight */
+.highlight::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 4px;
+    width: 100%;
+    height: 6px;
+    background-color: rgba(37, 99, 235, 0.1);
+    z-index: -1;
+}
+
+.hero-text p {
+    font-size: 1rem;
+    /* Smaller */
+    color: #475569;
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 0.75rem;
+    /* Reduced from 1rem */
+    margin-bottom: 1.25rem;
+    /* Reduced from 1.5rem */
+}
+
+.btn {
+    padding: 0.6rem 1.25rem;
+    /* Smaller buttons */
+    border-radius: 0.375rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    /* Smaller text */
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: white;
+    color: #2563eb;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary:hover {
+    background-color: #f8fafc;
+    transform: translateY(-2px);
+}
+
+.social-links {
+    display: flex;
+    gap: 0.75rem;
+    /* Reduced from 1rem */
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    /* Reduced from 36px */
+    height: 32px;
+    /* Reduced from 36px */
+    border-radius: 50%;
+    background-color: white;
+    color: #475569;
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+    /* Smaller icons */
+}
+
+.social-links a:hover {
+    color: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Smaller code snippet */
+.hero-image {
+    position: relative;
+}
+
+.code-snippet {
+    background-color: #1e293b;
+    border-radius: 8px;
+    padding: 1.25rem;
+    /* Reduced padding */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    font-size: 0.85rem;
+    /* Smaller code */
+}
+
+.code-snippet::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 24px;
+    /* Reduced from 28px */
+    background-color: #1e293b;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Code window buttons */
+.code-snippet::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    /* Reduced from 10px */
+    left: 12px;
+    /* Reduced from 15px */
+    width: 10px;
+    /* Reduced from 12px */
+    height: 10px;
+    /* Reduced from 12px */
+    background-color: #ef4444;
+    /* Red */
+    border-radius: 50%;
+    box-shadow:
+        16px 0 0 #f59e0b,
+        /* Yellow */
+        32px 0 0 #10b981;
+    /* Green */
+}
+
+.code-snippet pre {
+    margin-top: 16px;
+    /* Reduced from 20px */
+    overflow: hidden;
+}
+
+.code-snippet code {
+    font-family: 'JetBrains Mono', monospace;
+    color: #e2e8f0;
+    line-height: 1.5;
+    /* Reduced from 1.6 */
+    font-size: 0.85rem;
+    /* Reduced from 0.9rem */
+}
+
+/* Improved syntax highlighting colors */
+.code-keyword {
+    color: #93c5fd;
+    /* Light blue */
+}
+
+.code-variable {
+    color: #c4b5fd;
+    /* Light purple */
+}
+
+.code-property {
+    color: #93c5fd;
+    /* Light blue */
+}
+
+.code-string {
+    color: #86efac;
+    /* Light green */
+}
+
+@media (max-width: 992px) {
+    .hero {
+        min-height: auto;
+        padding: 30px 0;
+        /* Reduced from 40px */
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 1rem;
+        /* Reduced from 1.5rem */
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .hero-image {
+        margin-top: 0.75rem;
+        /* Reduced from 1rem */
+        margin-bottom: 0.75rem;
+        /* Reduced from 1rem */
+    }
+}
+
+@media (max-width: 768px) {
+    .typewriter-text {
+        font-size: 2rem;
+        /* Reduced from 2.2rem */
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+        /* Reduced from 1.3rem */
+    }
+
+    .typewriter {
+        font-size: 1.3rem;
+        height: 2rem;
+    }
+}

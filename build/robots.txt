@@ -1,0 +1,4 @@
+User's requested file contents for /portfolio-website/portfolio-website/public/robots.txt:
+
+User-agent: *
+Disallow: /

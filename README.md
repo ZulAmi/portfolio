@@ -77,9 +77,3 @@ The application will be available at `http://localhost:3000`.
 - CSS
 - JavaScript
 - HTML
-
-## Author
-
-[Your Name] - [Your LinkedIn Profile] - [Your Email Address]
-
-Feel free to reach out for any inquiries or collaborations!
