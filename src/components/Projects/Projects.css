@@ -1,5 +1,5 @@
 .projects {
-    padding: 60px 0;
+    padding: var(--space-3xl) 0;
     background-color: var(--light);
     position: relative;
     overflow: hidden;
@@ -23,41 +23,40 @@
 }
 
 .section-description {
+    max-width: 600px;
+    margin: 0 auto var(--space-2xl);
     text-align: center;
-    max-width: 700px;
-    margin: 0 auto 3rem;
     color: var(--text-secondary);
-    font-size: 1.1rem;
+    font-size: var(--text-lg);
+    line-height: 1.6;
 }
 
 .project-filters {
     display: flex;
     justify-content: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-2xl);
     flex-wrap: wrap;
-    margin-bottom: 3rem;
-    gap: 0.75rem;
 }
 
 .filter-btn {
-    background: none;
-    border: none;
-    padding: 0.5rem 1.25rem;
-    border-radius: 30px;
-    cursor: pointer;
-    font-size: 0.95rem;
-    font-weight: 500;
+    padding: var(--space-sm) var(--space-lg);
+    border: 1px solid var(--border);
+    border-radius: 2rem;
+    background: transparent;
     color: var(--text-secondary);
-    transition: all 0.3s ease;
-    border: 1px solid #e5e7eb;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
 }
 
 .filter-btn:hover {
-    color: var(--primary);
-    background-color: rgba(37, 99, 235, 0.05);
+    background: var(--light-dark);
+    color: var(--text-primary);
 }
 
 .filter-btn.active {
-    background-color: var(--primary);
+    background: var(--primary);
     color: white;
     border-color: var(--primary);
 }
@@ -73,22 +72,92 @@
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+}
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    gap: var(--space-md);
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--light-dark);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .projects-cta {
     text-align: center;
-    margin-top: 2rem;
+    margin-top: var(--space-2xl);
+}
+
+.projects-cta .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-xl);
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all var(--transition-fast);
+    text-decoration: none;
+}
+
+.projects-cta .btn-primary {
+    background: var(--primary);
+    color: white;
+    border: none;
+}
+
+.projects-cta .btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-arrow {
+    transition: transform var(--transition-fast);
+}
+
+.btn:hover .btn-arrow {
+    transform: translateX(4px);
 }
 
 @media (max-width: 768px) {
-    .projects-list {
-        grid-template-columns: 1fr;
+    .projects {
+        padding: var(--space-2xl) 0;
+    }
+
+    .section-description {
+        font-size: var(--text-base);
+        padding: 0 var(--space-md);
+    }
+
+    .project-filters {
+        gap: var(--space-xs);
+    }
+
+    .filter-btn {
+        padding: var(--space-xs) var(--space-md);
+        font-size: var(--text-sm);
     }
 
     .projects-grid {
         grid-template-columns: 1fr;
+        gap: var(--space-lg);
     }
 }
