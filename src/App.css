@@ -11,13 +11,13 @@
     --dark-light: #1f2937;
     --light: #f9fafb;
     --light-dark: #f3f4f6;
-    --text-primary: #111827;
-    --text-secondary: #4b5563;
+    --text-primary: #f9fafb;
+    --text-secondary: #94a3b8;
     --text-light: #9ca3af;
     --success: #10b981;
     --warning: #f59e0b;
     --error: #ef4444;
-    --border: #e5e7eb;
+    --border: #1f2937;
 
     /* Enhanced spacing system */
     --space-2xs: 0.125rem;
@@ -59,7 +59,7 @@
 body {
     font-family: var(--font-sans);
     color: var(--text-primary);
-    background-color: var(--light);
+    background-color: var(--dark);
     line-height: 1.7;
     font-size: var(--text-base);
     -webkit-font-smoothing: antialiased;
@@ -74,6 +74,7 @@ h5,
 h6 {
     margin: 0;
     padding: 0;
+    color: var(--text-primary);
 }
 
 a {
@@ -83,7 +84,7 @@ a {
 }
 
 a:hover {
-    color: var(--primary-dark);
+    color: var(--primary-light);
 }
 
 html {
@@ -96,6 +97,18 @@ html {
     margin: 0 auto;
     padding: 0 1.5rem;
     width: 100%;
+}
+
+.App {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--dark);
+}
+
+main {
+    flex: 1;
+    background-color: var(--dark);
 }
 
 .header {
@@ -114,7 +127,7 @@ html {
 
 .hero {
     background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-    min-height: 80vh;
+    min-height: 60vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -122,6 +135,7 @@ html {
     text-align: center;
     position: relative;
     overflow: hidden;
+    margin-bottom: 2rem;
 }
 
 .hero::before {

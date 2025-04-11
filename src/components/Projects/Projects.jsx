@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import './Projects.css';
+import { motion, AnimatePresence } from 'framer-motion';
 import ProjectCard from './ProjectCard';
 import projectsData from '../../data/projects';
-import { motion, AnimatePresence } from 'framer-motion';
+import styles from './Projects.module.css';
 
 const Projects = () => {
     const [projects, setProjects] = useState([]);
@@ -55,91 +55,78 @@ const Projects = () => {
     };
 
     return (
-        <section className="projects" id="projects">
-            <div className="container">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                >
-                    <h2 className="section-title">Featured Projects</h2>
-                    <p className="section-description">
-                        Explore my latest work showcasing modern web development practices,
-                        responsive design, and innovative solutions.
+        <section className={styles.projectsSection} id="projects">
+            <motion.div
+                className={styles.projectsContainer}
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+            >
+                <motion.div className={styles.projectsHeader} variants={itemVariants}>
+                    <h2 className={styles.sectionTitle}>
+                        <span className={styles.titleAccent}>Featured</span> Projects
+                    </h2>
+                    <div className={styles.titleUnderline}></div>
+                    <p className={styles.sectionDescription}>
+                        Explore my latest work and personal projects
                     </p>
                 </motion.div>
 
-                <motion.div
-                    className="project-filters"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                >
-                    {categories.map(category => (
-                        <motion.button
-                            key={category}
-                            className={`filter-btn ${filter === category ? 'active' : ''}`}
-                            onClick={() => setFilter(category)}
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                        >
-                            {category.charAt(0).toUpperCase() + category.slice(1)}
-                        </motion.button>
-                    ))}
+                <motion.div className={styles.filterContainer} variants={itemVariants}>
+                    <div className={styles.filterButtons}>
+                        {categories.map((category, index) => (
+                            <motion.button
+                                key={index}
+                                className={`${styles.filterButton} ${filter === category ? styles.activeFilter : ''}`}
+                                onClick={() => setFilter(category)}
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                {category.charAt(0).toUpperCase() + category.slice(1)}
+                            </motion.button>
+                        ))}
+                    </div>
                 </motion.div>
 
                 {isLoading ? (
-                    <div className="loading-container">
-                        <div className="loading-spinner"></div>
+                    <motion.div
+                        className={styles.loadingContainer}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                    >
+                        <div className={styles.loader}></div>
                         <p>Loading projects...</p>
-                    </div>
+                    </motion.div>
                 ) : (
                     <motion.div
-                        className="projects-grid"
-                        variants={containerVariants}
-                        initial="hidden"
-                        animate="visible"
+                        className={styles.projectsGrid}
+                        layout
                     >
                         <AnimatePresence mode="wait">
                             {visibleProjects.map((project, index) => (
-                                <motion.div
+                                <ProjectCard
                                     key={project.id}
-                                    variants={itemVariants}
-                                    initial="hidden"
-                                    animate="visible"
-                                    exit={{ opacity: 0, scale: 0.8 }}
-                                    transition={{ duration: 0.3 }}
-                                >
-                                    <ProjectCard
-                                        project={project}
-                                        delay={index * 0.1}
-                                    />
-                                </motion.div>
+                                    project={project}
+                                    delay={index * 0.1}
+                                />
                             ))}
                         </AnimatePresence>
                     </motion.div>
                 )}
 
-                <motion.div
-                    className="projects-cta"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.4 }}
-                >
-                    <a
-                        href="https://github.com/yourusername"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn btn-primary"
+                {!isLoading && visibleProjects.length === 0 && (
+                    <motion.div
+                        className={styles.noProjects}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
                     >
-                        View More on GitHub
-                        <span className="btn-arrow">→</span>
-                    </a>
-                </motion.div>
-            </div>
+                        <p>No projects found in this category.</p>
+                    </motion.div>
+                )}
+            </motion.div>
         </section>
     );
 };

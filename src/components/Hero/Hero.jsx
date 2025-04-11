@@ -1,150 +1,93 @@
-import React, { useState, useEffect } from 'react';
-import './Hero.css';
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import React from 'react';
 import { motion } from 'framer-motion';
+import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import styles from './Hero.module.css';
 
 const Hero = () => {
-    const [text, setText] = useState('');
-    const [isTypingName, setIsTypingName] = useState(false);
-    const [nameText, setNameText] = useState('');
-    const introText = "Hi, I'm ";
-    const fullNameText = "Muhammad Zulhilmi";
-
-    useEffect(() => {
-        if (text.length < introText.length) {
-            const timeout = setTimeout(() => {
-                setText(introText.slice(0, text.length + 1));
-            }, 100);
-            return () => clearTimeout(timeout);
-        }
-        else if (nameText.length < fullNameText.length) {
-            if (!isTypingName) setIsTypingName(true);
-            const timeout = setTimeout(() => {
-                setNameText(fullNameText.slice(0, nameText.length + 1));
-            }, 100);
-            return () => clearTimeout(timeout);
-        }
-    }, [text, nameText, isTypingName, introText, fullNameText]);
-
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.3
-            }
-        }
-    };
-
-    const itemVariants = {
-        hidden: { y: 20, opacity: 0 },
-        visible: {
-            y: 0,
-            opacity: 1,
-            transition: {
-                duration: 0.5,
-                ease: "easeOut"
-            }
-        }
-    };
-
     return (
-        <section className="hero" id="home">
-            <div className="container hero-content">
+        <section className={styles.heroSection}>
+            <div className={styles.heroContent}>
                 <motion.div
-                    className="hero-text"
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate="visible"
+                    className={styles.textContent}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
                 >
-                    <div className="typewriter-container">
-                        <motion.h1
-                            className="typewriter-text"
-                            variants={itemVariants}
-                        >
-                            {text}
-                            {isTypingName && (
-                                <span className="highlight typewriter-name">
-                                    {nameText}
-                                    {nameText.length === fullNameText.length ? "" : null}
-                                </span>
-                            )}
-                            <span className="cursor blinking"></span>
-                        </motion.h1>
-                    </div>
-
-                    <motion.h2
-                        className="hero-subtitle"
-                        variants={itemVariants}
+                    <motion.h1
+                        className={styles.title}
+                        initial={{ opacity: 0, x: -50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.2, duration: 0.8 }}
                     >
-                        Frontend Developer
-                    </motion.h2>
-
+                        <span className={styles.gradientText}>Creative</span> Developer
+                    </motion.h1>
                     <motion.p
-                        className="hero-description"
-                        variants={itemVariants}
+                        className={styles.subtitle}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.4, duration: 0.8 }}
                     >
-                        I craft responsive, user-friendly interfaces with modern web technologies.
-                        Specializing in React, Next.js, and modern UI/UX practices.
+                        Crafting digital experiences through code and design
                     </motion.p>
-
                     <motion.div
-                        className="hero-buttons"
-                        variants={itemVariants}
+                        className={styles.ctaContainer}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.6, duration: 0.8 }}
                     >
-                        <a href="#projects" className="btn btn-primary">
-                            View My Work
-                            <span className="btn-arrow">→</span>
-                        </a>
-                        <a href="#contact" className="btn btn-secondary">
-                            Get In Touch
-                            <span className="btn-arrow">→</span>
-                        </a>
-                    </motion.div>
-
-                    <motion.div
-                        className="social-links"
-                        variants={itemVariants}
-                    >
-                        <a
-                            href="https://github.com/yourusername"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="GitHub"
-                            className="social-link"
-                        >
-                            <FaGithub />
-                        </a>
-                        <a
-                            href="https://linkedin.com/in/yourusername"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="LinkedIn"
-                            className="social-link"
-                        >
-                            <FaLinkedin />
-                        </a>
-                        <a
-                            href="https://twitter.com/yourusername"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="Twitter"
-                            className="social-link"
-                        >
-                            <FaTwitter />
-                        </a>
+                        <button className={styles.primaryButton}>View Projects</button>
+                        <button className={styles.secondaryButton}>Contact Me</button>
                     </motion.div>
                 </motion.div>
 
                 <motion.div
-                    className="hero-image"
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8, delay: 0.5 }}
+                    className={styles.visualContent}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8 }}
                 >
-                    {/* Add your hero image or illustration here */}
+                    <div className={styles.profileContainer}>
+                        <div className={styles.profileImage}>
+                            <img src="/profile.jpg" alt="Profile" />
+                        </div>
+                        <div className={styles.decorativeCircle} />
+                        <div className={styles.decorativeSquare} />
+                    </div>
                 </motion.div>
             </div>
+
+            <motion.div
+                className={styles.socialLinks}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.8, duration: 0.8 }}
+            >
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                    <FaGithub />
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                    <FaLinkedin />
+                </a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                    <FaTwitter />
+                </a>
+            </motion.div>
+
+            <motion.div
+                className={styles.scrollIndicator}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1, duration: 0.8 }}
+            >
+                <div className={styles.scrollText}>Scroll Down</div>
+                <motion.div
+                    className={styles.scrollArrow}
+                    animate={{ y: [0, 10, 0] }}
+                    transition={{ repeat: Infinity, duration: 1.5 }}
+                >
+                    ↓
+                </motion.div>
+            </motion.div>
         </section>
     );
 };

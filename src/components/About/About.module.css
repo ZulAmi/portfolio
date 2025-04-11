@@ -1,0 +1,205 @@
+.aboutSection {
+    padding: 6rem 2rem;
+    background: var(--dark);
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.aboutSection::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image:
+        radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
+    z-index: 0;
+}
+
+.aboutContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.aboutHeader {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.sectionTitle {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: #f8fafc;
+}
+
+.titleAccent {
+    background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+.titleUnderline {
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #6366f1, #a855f7);
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+.aboutContent {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.aboutText {
+    color: var(--light);
+}
+
+.aboutText h2 {
+    font-size: var(--text-4xl);
+    margin-bottom: 1.5rem;
+    color: var(--light);
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.aboutText p {
+    font-size: var(--text-lg);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: var(--text-light);
+}
+
+.skillsContainer {
+    margin-top: 2rem;
+}
+
+.skillsTitle,
+.experienceTitle {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #f8fafc;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.skillsList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+}
+
+.skillCard {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skillCard:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--primary);
+}
+
+.skillCard h3 {
+    color: var(--light);
+    font-size: var(--text-xl);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.skillCard p {
+    color: var(--text-light);
+    font-size: var(--text-base);
+    line-height: 1.6;
+}
+
+.experienceContainer {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: rgba(30, 41, 59, 0.3);
+    border-radius: 16px;
+    border: 1px solid rgba(99, 102, 241, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.experienceContainer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(168, 85, 247, 0.05) 100%);
+    z-index: 0;
+}
+
+.experienceContainer p {
+    color: #94a3b8;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .aboutContent {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .aboutText h2 {
+        font-size: var(--text-3xl);
+    }
+
+    .skillsList {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .aboutSection {
+        padding: 4rem 1rem;
+    }
+
+    .aboutText h2 {
+        font-size: var(--text-2xl);
+    }
+
+    .skillsTitle,
+    .experienceTitle {
+        font-size: 1.5rem;
+    }
+
+    .experienceContainer p {
+        font-size: 1rem;
+    }
+
+    .skillsList {
+        grid-template-columns: 1fr;
+    }
+
+    .skillCard {
+        padding: 1.25rem;
+    }
+}
