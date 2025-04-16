@@ -3,29 +3,35 @@ import './App.css';
 import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
 import About from './components/About/About';
-import Projects from './components/Projects/Projects';
 import Skills from './components/Skills/Skills';
+import Projects from './components/Projects/Projects';
 import Experience from './components/Experience/Experience';
 import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
 
 function App() {
     return (
-        <div className="App compact-theme">
+        <div className="App professional-theme">
             <Header />
-            <main className="compact-layout">
-                <Hero />
-                <div className="two-column-section">
+            <main className="main-content">
+                <section id="hero-section" className="section hero-section">
+                    <Hero />
+                </section>
+                <section id="about-section" className="section about-section">
                     <About />
+                </section>
+                <section id="skills-section" className="section skills-section">
                     <Skills />
-                </div>
-                <div className="full-width-section">
+                </section>
+                <section id="projects-section" className="section projects-section">
                     <Projects />
-                </div>
-                <div className="two-column-section reverse">
-                    <Contact />
+                </section>
+                <section id="experience-section" className="section experience-section">
                     <Experience />
-                </div>
+                </section>
+                <section id="contact-section" className="section contact-section">
+                    <Contact />
+                </section>
             </main>
             <Footer />
         </div>

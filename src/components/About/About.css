@@ -3,7 +3,8 @@
 /* Main section container */
 #about {
     padding: var(--space-3xl) var(--space-xl);
-    background: linear-gradient(to bottom, var(--dark), var(--dark-light));
+    /* Uniform and professional background for all sections */
+    background: linear-gradient(120deg, var(--dark, #181824) 60%, var(--dark-light, #232946) 100%) !important;
     position: relative;
     z-index: 1;
     min-height: 90vh;

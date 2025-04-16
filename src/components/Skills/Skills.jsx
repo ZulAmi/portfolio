@@ -42,8 +42,8 @@ const Skills = () => {
                     <span className="skills-section-title">Expertise</span>
                     <h2 className="skills-title">
                         Technical Proficiency
-                        <div className="skills-title-underline"></div>
                     </h2>
+                    <div className="skills-title-underline"></div>
                     <p className="skills-description">
                         My technical toolkit combines front-end precision, back-end architecture,
                         and modern DevOps practices to deliver complete solutions.
@@ -62,18 +62,16 @@ const Skills = () => {
                     ))}
                 </div>
 
-                <div className="hexagon-container">
-                    {skillsData[activeCategory].map((skill, index) => (
-                        <div className="hexagon-wrapper" key={skill.name} style={{ animationDelay: `${index * 0.1}s` }}>
-                            <div className="hexagon-skill" style={{ borderColor: getLevelColor(skill.level) }}>
-                                <div className="hexagon-content">
-                                    <div className="skill-icon">{skill.icon}</div>
-                                    <h3 className="hexagon-title">{skill.name}</h3>
-                                    <div className="hexagon-level" style={{ color: getLevelColor(skill.level) }}>
-                                        {skill.level}
-                                    </div>
-                                    <div className="hexagon-years">{skill.years} years</div>
+                <div className="skills-grid">
+                    {skillsData[activeCategory].map((skill) => (
+                        <div className="skill-card" key={skill.name}>
+                            <div className="skill-icon" aria-label={skill.name}>{skill.icon}</div>
+                            <div className="skill-details">
+                                <div className="skill-title">{skill.name}</div>
+                                <div className="skill-level" style={{ color: getLevelColor(skill.level) }}>
+                                    {skill.level}
                                 </div>
+                                <div className="skill-years">{skill.years} years</div>
                             </div>
                         </div>
                     ))}
