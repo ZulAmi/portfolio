@@ -6,6 +6,10 @@ const Header = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [activeSection, setActiveSection] = useState('home');
 
+    const toggleMobileMenu = () => {
+        setMobileMenuOpen(!mobileMenuOpen);
+    };
+
     useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 50);
@@ -29,16 +33,25 @@ const Header = () => {
     }, []);
 
     const scrollToSection = (sectionId) => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-            const headerOffset = 80;
-            const elementPosition = element.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
+        // Special case for home - go to the very top
+        if (sectionId === 'home') {
             window.scrollTo({
-                top: offsetPosition,
+                top: 0,
                 behavior: 'smooth'
             });
+        } else {
+            // For other sections, use the existing logic
+            const element = document.getElementById(sectionId);
+            if (element) {
+                const headerOffset = 80;
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
         }
         setMobileMenuOpen(false);
     };
@@ -48,16 +61,20 @@ const Header = () => {
             <div className="progress-bar" style={{ width: `${(window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100}%` }}></div>
             <div className="container header-container">
                 <div className="logo">
-                    <a href="#home" onClick={(e) => {
+                    <a href="#" onClick={(e) => {
                         e.preventDefault();
                         scrollToSection('home');
                     }}>
                         <span className="logo-icon">&lt;/&gt;</span>
-                        <span className="logo-text">Muhammad Zulhilmi Bin Rahmat</span>
+                        <span className="logo-text">Muhammad Zulhilmi</span>
                     </a>
                 </div>
 
-                <button className="mobile-menu-btn" onClick={() => toggleMobileMenu()}>
+                <button
+                    className={`mobile-menu-btn ${mobileMenuOpen ? 'open' : ''}`}
+                    onClick={toggleMobileMenu}
+                    aria-label="Toggle menu"
+                >
                     <span></span>
                     <span></span>
                     <span></span>

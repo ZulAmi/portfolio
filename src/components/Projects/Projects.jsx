@@ -5,19 +5,13 @@ import projectsData from '../../data/projects';
 import styles from './Projects.module.css';
 
 const Projects = () => {
-    const [projects, setProjects] = useState([]);
+    // Initial state setup
+    const [projects, setProjects] = useState(projectsData); // Direct assignment
     const [filter, setFilter] = useState('all');
-    const [visibleProjects, setVisibleProjects] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
+    const [visibleProjects, setVisibleProjects] = useState(projectsData); // Direct assignment
+    const [isLoading, setIsLoading] = useState(false); // Set to false initially
 
-    useEffect(() => {
-        // Simulate loading projects from API or data source
-        setTimeout(() => {
-            setProjects(projectsData);
-            setVisibleProjects(projectsData);
-            setIsLoading(false);
-        }, 500);
-    }, []);
+    // Remove the initial loading setTimeout that might be causing issues
 
     useEffect(() => {
         if (filter === 'all') {
@@ -58,10 +52,10 @@ const Projects = () => {
         <section className={styles.projectsSection} id="projects">
             <motion.div
                 className={styles.projectsContainer}
-                variants={containerVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
+                initial={{ opacity: 1 }} // Force visibility
+            // variants={containerVariants} 
+            // whileInView="visible"
+            // viewport={{ once: true, amount: 0.2 }}
             >
                 <motion.div className={styles.projectsHeader} variants={itemVariants}>
                     <h2 className={styles.sectionTitle}>

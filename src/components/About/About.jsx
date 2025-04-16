@@ -1,130 +1,93 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import './About.css';
 
 const About = () => {
+    // Animation variants
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
             transition: {
-                staggerChildren: 0.2
+                staggerChildren: 0.15,
+                duration: 0.6
             }
         }
     };
 
     const itemVariants = {
-        hidden: { y: 20, opacity: 0 },
+        hidden: { y: 15, opacity: 0 },
         visible: {
             y: 0,
             opacity: 1,
             transition: {
-                duration: 0.5
+                duration: 0.5,
+                ease: "easeOut"
             }
         }
     };
 
-    const styles = {
-        aboutSection: {
-            padding: '6rem 2rem',
-            background: '#0f172a',
-            position: 'relative',
-            zIndex: 1,
-            minHeight: '100vh',
-            display: 'flex',
-            alignItems: 'center'
-        },
-        aboutContainer: {
-            maxWidth: '1200px',
-            margin: '0 auto',
-            width: '100%',
-            position: 'relative',
-            zIndex: 1
-        },
-        aboutContent: {
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '4rem',
-            alignItems: 'center'
-        },
-        aboutText: {
-            color: '#f8fafc'
-        },
-        heading: {
-            fontSize: '2.5rem',
-            marginBottom: '1.5rem',
-            color: '#f8fafc',
-            fontWeight: 700
-        },
-        paragraph: {
-            fontSize: '1.1rem',
-            lineHeight: 1.8,
-            marginBottom: '1.5rem',
-            color: '#94a3b8'
-        },
-        skillsList: {
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
-            gap: '1.5rem'
-        },
-        skillCard: {
-            background: 'rgba(255, 255, 255, 0.05)',
-            padding: '1.5rem',
-            borderRadius: '12px',
-            textAlign: 'center',
-            transition: 'all 0.3s ease',
-            border: '1px solid rgba(255, 255, 255, 0.1)'
-        },
-        skillHeading: {
-            color: '#f8fafc',
-            fontSize: '1.25rem',
-            marginBottom: '0.5rem',
-            fontWeight: 600
-        },
-        skillText: {
-            color: '#94a3b8',
-            fontSize: '0.95rem',
-            lineHeight: 1.6
-        }
-    };
-
     return (
-        <section id="about" style={styles.aboutSection}>
+        <section id="about">
             <motion.div
-                style={styles.aboutContainer}
-                variants={containerVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
+                className="about-container"
+                // Remove animations temporarily for testing 
+                // variants={containerVariants}
+                // initial="hidden"
+                // whileInView="visible"
+                initial={{ opacity: 1 }} // Force visibility
+            // viewport={{ once: true, amount: 0.1 }}
             >
-                <div style={styles.aboutContent}>
-                    <motion.div style={styles.aboutText} variants={itemVariants}>
-                        <h2 style={styles.heading}>About Me</h2>
-                        <p style={styles.paragraph}>
-                            I am a passionate full-stack developer with expertise in building modern web applications.
-                            My journey in software development started with a curiosity for creating things that live on the internet.
+                <div className="about-content">
+                    <motion.div className="about-text" variants={itemVariants}>
+                        <div style={{ marginBottom: '1.5rem' }}>
+                            <span className="about-section-title">About</span>
+                        </div>
+                        <h2 className="heading">
+                            Professional Background
+                            <div className="heading-underline"></div>
+                        </h2>
+                        <p className="paragraph">
+                            I'm a <span className="highlight">full-stack developer</span> with extensive experience crafting responsive,
+                            high-performance web applications. My approach combines technical expertise with creative
+                            problem-solving to deliver exceptional user experiences.
                         </p>
-                        <p style={styles.paragraph}>
-                            I specialize in JavaScript and its ecosystem, particularly React for frontend development.
-                            I'm also experienced in backend technologies and always eager to learn new tools and frameworks.
+                        <p className="paragraph">
+                            With a strong foundation in the JavaScript ecosystem, I specialize in building modern applications
+                            using React and Next.js. My backend proficiency includes creating robust APIs and managing database
+                            architectures that scale efficiently with business needs.
+                        </p>
+                        <p className="paragraph">
+                            I'm committed to continuous learning and keeping pace with emerging technologies to implement
+                            best practices in software development.
                         </p>
                     </motion.div>
-                    <motion.div style={styles.skillsList} variants={itemVariants}>
-                        <div style={styles.skillCard}>
-                            <h3 style={styles.skillHeading}>Frontend</h3>
-                            <p style={styles.skillText}>React, Next.js, TypeScript</p>
+                    <motion.div variants={itemVariants}>
+                        <div style={{ marginBottom: '2rem' }}>
+                            <span className="about-section-title">Expertise</span>
+                            <h3 className="heading subheading">
+                                Technical Skills
+                                <div className="heading-underline"></div>
+                            </h3>
                         </div>
-                        <div style={styles.skillCard}>
-                            <h3 style={styles.skillHeading}>Backend</h3>
-                            <p style={styles.skillText}>Node.js, Express, MongoDB</p>
-                        </div>
-                        <div style={styles.skillCard}>
-                            <h3 style={styles.skillHeading}>Tools</h3>
-                            <p style={styles.skillText}>Git, Docker, AWS</p>
-                        </div>
-                        <div style={styles.skillCard}>
-                            <h3 style={styles.skillHeading}>Design</h3>
-                            <p style={styles.skillText}>Figma, CSS, Tailwind</p>
-                        </div>
+                        <motion.div className="skills-list" variants={containerVariants}>
+                            <motion.div className="skill-card" whileHover={{ y: -5 }} variants={itemVariants}>
+                                <h3 className="skill-heading">Frontend</h3>
+                                <p className="skill-text">React, Next.js, TypeScript, Redux</p>
+                            </motion.div>
+                            <motion.div className="skill-card" whileHover={{ y: -5 }} variants={itemVariants}>
+                                <h3 className="skill-heading">Backend</h3>
+                                <p className="skill-text">Node.js, Express, MongoDB, PostgreSQL</p>
+                            </motion.div>
+                            <motion.div className="skill-card" whileHover={{ y: -5 }} variants={itemVariants}>
+                                <h3 className="skill-heading">DevOps</h3>
+                                <p className="skill-text">Git, Docker, AWS, CI/CD</p>
+                            </motion.div>
+                            <motion.div className="skill-card" whileHover={{ y: -5 }} variants={itemVariants}>
+                                <h3 className="skill-heading">Design</h3>
+                                <p className="skill-text">Figma, Tailwind CSS, Responsive Design</p>
+                            </motion.div>
+                        </motion.div>
                     </motion.div>
                 </div>
             </motion.div>
