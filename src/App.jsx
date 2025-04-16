@@ -11,15 +11,21 @@ import Footer from './components/Footer/Footer';
 
 function App() {
     return (
-        <div className="App">
+        <div className="App compact-theme">
             <Header />
-            <main>
+            <main className="compact-layout">
                 <Hero />
-                <About />
-                <Projects />
-                <Skills />
-                <Experience />
-                <Contact />
+                <div className="two-column-section">
+                    <About />
+                    <Skills />
+                </div>
+                <div className="full-width-section">
+                    <Projects />
+                </div>
+                <div className="two-column-section reverse">
+                    <Contact />
+                    <Experience />
+                </div>
             </main>
             <Footer />
         </div>

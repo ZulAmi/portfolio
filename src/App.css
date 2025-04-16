@@ -281,3 +281,94 @@ main {
     margin: 0 auto;
     padding: 0 var(--space-lg);
 }
+
+/* Compact theme adjustments */
+
+/* Global compact theme variables */
+.compact-theme {
+    --section-padding-y: 60px;
+    /* Reduced from original */
+    --section-padding-x: 20px;
+    /* Reduced from original */
+    --container-max-width: 1200px;
+    --component-spacing: 20px;
+    /* Space between components */
+}
+
+/* Main layout container */
+.compact-layout {
+    display: flex;
+    flex-direction: column;
+    gap: var(--component-spacing);
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 var(--section-padding-x);
+}
+
+/* Two-column section layout */
+.two-column-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: var(--component-spacing);
+    width: 100%;
+}
+
+.two-column-section.reverse {
+    direction: rtl;
+}
+
+.two-column-section.reverse>* {
+    direction: ltr;
+}
+
+.full-width-section {
+    width: 100%;
+}
+
+/* Override section heights and padding */
+#about,
+#skills,
+#experience,
+#contact,
+#projects {
+    min-height: initial !important;
+    /* Override the tall section heights */
+    padding: var(--section-padding-y) var(--section-padding-x) !important;
+}
+
+/* Make headers more compact */
+.section-title,
+.skills-title,
+.experience-title,
+.about-title,
+.contact-title {
+    font-size: 1.75rem !important;
+    margin-bottom: 0.75rem !important;
+}
+
+/* Reduce padding in cards */
+.experience-card,
+.project-card,
+.skill-card {
+    padding: 1rem !important;
+}
+
+/* Make hero section more compact */
+#hero {
+    min-height: 70vh !important;
+    /* Reduce from 100vh */
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .two-column-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .compact-theme {
+        --section-padding-y: 40px;
+        --section-padding-x: 15px;
+    }
+}
