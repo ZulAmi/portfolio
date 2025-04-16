@@ -1,80 +1,84 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { FaCode, FaLaptopCode, FaMobileAlt, FaServer } from 'react-icons/fa';
-import skillsData from '../../data/skills';
-import styles from './Skills.module.css';
+import React, { useState } from 'react';
+import './Skills.css';
+
+const skillsData = {
+    "Development": [
+        { name: "React.js", level: "Advanced", years: 4, icon: "⚛️" },
+        { name: "Next.js", level: "Advanced", years: 3, icon: "▲" },
+        { name: "TypeScript", level: "Intermediate", years: 3, icon: "📘" },
+        { name: "Node.js", level: "Advanced", years: 4, icon: "🟢" },
+        { name: "GraphQL", level: "Intermediate", years: 2, icon: "◼️" },
+        { name: "MongoDB", level: "Intermediate", years: 3, icon: "🍃" },
+    ],
+    "Design": [
+        { name: "Figma", level: "Intermediate", years: 2, icon: "🎨" },
+        { name: "Tailwind", level: "Advanced", years: 3, icon: "🌬️" },
+        { name: "UI/UX", level: "Intermediate", years: 3, icon: "📱" },
+        { name: "Animation", level: "Intermediate", years: 2, icon: "✨" },
+    ],
+    "DevOps": [
+        { name: "Git", level: "Advanced", years: 5, icon: "📂" },
+        { name: "AWS", level: "Intermediate", years: 2, icon: "☁️" },
+        { name: "Docker", level: "Intermediate", years: 2, icon: "🐳" },
+        { name: "CI/CD", level: "Intermediate", years: 3, icon: "🔄" },
+    ]
+};
 
 const Skills = () => {
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.2,
-                delayChildren: 0.3
-            }
-        }
-    };
+    const [activeCategory, setActiveCategory] = useState("Development");
 
-    const itemVariants = {
-        hidden: { y: 20, opacity: 0 },
-        visible: {
-            y: 0,
-            opacity: 1,
-            transition: {
-                duration: 0.5,
-                ease: "easeOut"
-            }
-        }
-    };
-
-    const skillVariants = {
-        hidden: { scale: 0.8, opacity: 0 },
-        visible: {
-            scale: 1,
-            opacity: 1,
-            transition: {
-                duration: 0.3,
-                ease: "easeOut"
-            }
+    const getLevelColor = (level) => {
+        switch (level) {
+            case "Advanced": return "var(--primary)";
+            case "Intermediate": return "var(--secondary)";
+            default: return "var(--accent)";
         }
     };
 
     return (
-        <section className={styles.skillsSection} id="skills">
-            <motion.div
-                className={styles.skillsContainer}
-                variants={containerVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-            >
-                <motion.div className={styles.skillsHeader} variants={itemVariants}>
-                    <h2 className={styles.sectionTitle}>
-                        <span className={styles.titleAccent}>My</span> Skills
+        <section id="skills">
+            <div className="skills-container">
+                <div className="skills-header">
+                    <span className="skills-section-title">Expertise</span>
+                    <h2 className="skills-title">
+                        Technical Proficiency
+                        <div className="skills-title-underline"></div>
                     </h2>
-                    <div className={styles.titleUnderline}></div>
-                </motion.div>
+                    <p className="skills-description">
+                        My technical toolkit combines front-end precision, back-end architecture,
+                        and modern DevOps practices to deliver complete solutions.
+                    </p>
+                </div>
 
-                <motion.div className={styles.skillsGrid} variants={itemVariants}>
-                    {skillsData.map((skill, index) => (
-                        <motion.div
-                            key={index}
-                            className={styles.skillCard}
-                            variants={skillVariants}
+                <div className="skills-category-tabs">
+                    {Object.keys(skillsData).map(category => (
+                        <button
+                            key={category}
+                            className={`category-tab ${activeCategory === category ? 'active' : ''}`}
+                            onClick={() => setActiveCategory(category)}
                         >
-                            <div className={styles.skillIcon}>
-                                {skill.icon === 'code' && <FaCode />}
-                                {skill.icon === 'laptop' && <FaLaptopCode />}
-                                {skill.icon === 'mobile' && <FaMobileAlt />}
-                                {skill.icon === 'server' && <FaServer />}
-                            </div>
-                            <h3>{skill.name}</h3>
-                            <p>{skill.description}</p>
-                        </motion.div>
+                            {category}
+                        </button>
                     ))}
-                </motion.div>
-            </motion.div>
+                </div>
+
+                <div className="hexagon-container">
+                    {skillsData[activeCategory].map((skill, index) => (
+                        <div className="hexagon-wrapper" key={skill.name} style={{ animationDelay: `${index * 0.1}s` }}>
+                            <div className="hexagon-skill" style={{ borderColor: getLevelColor(skill.level) }}>
+                                <div className="hexagon-content">
+                                    <div className="skill-icon">{skill.icon}</div>
+                                    <h3 className="hexagon-title">{skill.name}</h3>
+                                    <div className="hexagon-level" style={{ color: getLevelColor(skill.level) }}>
+                                        {skill.level}
+                                    </div>
+                                    <div className="hexagon-years">{skill.years} years</div>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
         </section>
     );
 };

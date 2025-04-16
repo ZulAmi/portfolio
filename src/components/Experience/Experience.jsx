@@ -1,7 +1,6 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { FaBriefcase, FaGraduationCap, FaCode } from 'react-icons/fa';
-import styles from './Experience.module.css';
+import { FaBriefcase, FaGraduationCap, FaCode, FaChevronRight } from 'react-icons/fa';
+import './Experience.css';
 
 const Experience = () => {
     const experiences = [
@@ -10,82 +9,87 @@ const Experience = () => {
             company: 'Tech Company A',
             duration: 'Jan 2020 - Present',
             description: 'Developed and maintained user interfaces for web applications using React and Redux.',
-            icon: 'briefcase'
+            skills: ['React', 'Redux', 'TypeScript', 'Material UI'],
+            icon: 'briefcase',
+            color: '#3b82f6' // primary blue color
         },
         {
             title: 'Web Developer Intern',
             company: 'Startup B',
             duration: 'Jun 2019 - Dec 2019',
             description: 'Assisted in the development of responsive websites and web applications.',
-            icon: 'code'
+            skills: ['JavaScript', 'HTML/CSS', 'Bootstrap'],
+            icon: 'code',
+            color: '#10b981' // secondary green color
         },
         {
             title: 'Freelance Developer',
             company: 'Self-Employed',
             duration: 'Jan 2018 - May 2019',
             description: 'Worked on various freelance projects, focusing on frontend development and UI/UX design.',
-            icon: 'graduation'
+            skills: ['WordPress', 'jQuery', 'Figma'],
+            icon: 'graduation',
+            color: '#8b5cf6' // accent purple color
         }
     ];
 
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.2,
-                delayChildren: 0.3
-            }
-        }
-    };
-
-    const itemVariants = {
-        hidden: { y: 20, opacity: 0 },
-        visible: {
-            y: 0,
-            opacity: 1,
-            transition: {
-                duration: 0.5,
-                ease: "easeOut"
-            }
-        }
-    };
-
     return (
-        <section className={styles.experienceSection} id="experience">
-            <motion.div
-                className={styles.experienceContainer}
-                variants={containerVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-            >
-                <motion.div className={styles.experienceHeader} variants={itemVariants}>
-                    <h2 className={styles.sectionTitle}>
-                        <span className={styles.titleAccent}>Work</span> Experience
+        <section id="experience">
+            <div className="experience-container">
+                <div className="experience-header">
+                    <span className="experience-section-title">Career Path</span>
+                    <h2 className="experience-title">
+                        Professional Journey
+                        <div className="experience-title-underline"></div>
                     </h2>
-                    <div className={styles.titleUnderline}></div>
-                </motion.div>
+                    <p className="experience-subtitle">
+                        My career progression and professional accomplishments
+                    </p>
+                </div>
 
-                <motion.div className={styles.experienceGrid} variants={itemVariants}>
+                <div className="timeline-container">
+                    <div className="timeline-track"></div>
+
                     {experiences.map((exp, index) => (
-                        <motion.div
-                            key={index}
-                            className={styles.experienceCard}
-                            variants={itemVariants}
-                        >
-                            <div className={styles.experienceIcon}>
+                        <div className="timeline-item" key={index}>
+                            <div
+                                className="timeline-node"
+                                style={{ borderColor: exp.color }}
+                            >
                                 {exp.icon === 'briefcase' && <FaBriefcase />}
                                 {exp.icon === 'code' && <FaCode />}
                                 {exp.icon === 'graduation' && <FaGraduationCap />}
                             </div>
-                            <h3 className={styles.experienceTitle}>{exp.title}</h3>
-                            <p className={styles.companyInfo}>{exp.company} | {exp.duration}</p>
-                            <p className={styles.experienceDescription}>{exp.description}</p>
-                        </motion.div>
+
+                            <div className="timeline-content">
+                                <div className="experience-card">
+                                    <div className="card-header">
+                                        <div className="job-title-container">
+                                            <h3 className="job-title">{exp.title}</h3>
+                                            <div className="company-badge">{exp.company}</div>
+                                        </div>
+                                        <div className="duration-badge">{exp.duration}</div>
+                                    </div>
+
+                                    <p className="job-description">{exp.description}</p>
+
+                                    <div className="skills-container">
+                                        <div className="skills-header">
+                                            <FaChevronRight className="skills-icon" />
+                                            <span>Key Technologies</span>
+                                        </div>
+                                        <div className="skills-list">
+                                            {exp.skills.map((skill, idx) => (
+                                                <span className="skill-tag" key={idx} style={{ backgroundColor: `${exp.color}20`, borderColor: `${exp.color}50` }}>{skill}</span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     ))}
-                </motion.div>
-            </motion.div>
+                </div>
+            </div>
         </section>
     );
 };
