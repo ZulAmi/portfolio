@@ -2,15 +2,16 @@
 
 /* Main section container */
 #about {
-    padding: var(--space-3xl) var(--space-xl);
-    /* Uniform and professional background for all sections */
     background: linear-gradient(120deg, var(--dark, #181824) 60%, var(--dark-light, #232946) 100%) !important;
-    position: relative;
-    z-index: 1;
     min-height: 90vh;
     display: flex;
     align-items: center;
     width: 100%;
+    padding: 64px 0;
+    position: relative !important;
+    z-index: 100 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 /* Inner content container */
@@ -18,6 +19,7 @@
     max-width: 1200px;
     margin: 0 auto;
     width: 100%;
+    padding: 0 24px;
     position: relative;
     z-index: 1;
 }
@@ -25,9 +27,16 @@
 /* Two-column responsive grid */
 .about-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: var(--space-2xl);
-    align-items: start;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: flex-start;
+}
+
+@media (max-width: 900px) {
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
 }
 
 /* Left column text styling */
@@ -37,54 +46,54 @@
 
 /* Section label styling */
 .about-section-title {
-    font-size: var(--text-sm);
-    font-weight: 600;
-    color: var(--primary-light);
+    color: var(--primary, #3b82f6);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: var(--space-sm);
+    margin-bottom: 0.5rem;
     display: block;
 }
 
 /* Main headings */
 .heading {
-    font-size: var(--text-4xl);
-    margin-bottom: var(--space-xl);
-    color: var(--text-primary);
-    font-weight: 700;
-    line-height: 1.2;
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+    line-height: 1.1;
     position: relative;
+    display: inline-block;
     padding-bottom: var(--space-md);
 }
 
 .subheading {
-    font-size: var(--text-3xl);
-    margin-bottom: var(--space-lg);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--primary, #3b82f6);
 }
 
 /* Decorative heading underline */
 .heading-underline {
-    position: absolute;
-    bottom: 0;
-    left: 0;
     width: 60px;
-    height: 3px;
-    background: var(--primary);
+    height: 4px;
+    background: var(--primary, #3b82f6);
     border-radius: 2px;
+    margin-top: 0.5rem;
 }
 
 /* Paragraph text styling */
 .paragraph {
-    font-size: var(--text-lg);
-    line-height: 1.8;
-    margin-bottom: var(--space-lg);
-    color: var(--text-secondary);
+    font-size: 1.1rem;
+    color: var(--text-secondary, #b3b3c6);
+    margin-bottom: 1.2rem;
+    line-height: 1.7;
 }
 
 /* Highlighted text */
 .highlight {
-    color: var(--primary-light);
-    font-weight: 500;
+    color: var(--accent, #8b5cf6);
+    font-weight: 800;
 }
 
 /* Skills grid layout */
@@ -159,4 +168,81 @@
     .paragraph {
         font-size: var(--text-base);
     }
+}
+
+.about-quick-facts {
+    display: flex;
+    gap: 2rem;
+    margin: 1.2rem 0 1.2rem 0;
+    font-size: 1.05rem;
+}
+
+.about-quick-facts .fact-label {
+    color: var(--primary, #3b82f6);
+    font-weight: 600;
+    margin-right: 0.3rem;
+}
+
+.about-quick-facts .fact-value {
+    color: #fff;
+    font-weight: 700;
+}
+
+.about-cta {
+    margin-top: 1.5rem;
+}
+
+.about-hire-btn {
+    background: linear-gradient(90deg, var(--primary, #3b82f6) 30%, var(--accent, #8b5cf6) 70%);
+    color: #fff;
+    padding: 0.85rem 2.2rem;
+    border-radius: 32px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    box-shadow: 0 4px 24px 0 rgba(59, 130, 246, 0.08);
+    display: inline-block;
+}
+
+.about-hire-btn:hover {
+    background: linear-gradient(90deg, var(--accent, #8b5cf6) 30%, var(--primary, #3b82f6) 70%);
+    transform: translateY(-2px) scale(1.04);
+}
+
+.about-expertise {
+    background: rgba(36, 41, 54, 0.7);
+    border-radius: 14px;
+    padding: 32px 24px;
+    box-shadow: 0 2px 10px 0 rgba(59, 130, 246, 0.07);
+}
+
+.about-strengths-list {
+    margin: 1.2rem 0 1.5rem 0;
+    padding-left: 1.2rem;
+    color: #f4f4f5;
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+.about-strengths-list li {
+    margin-bottom: 0.7rem;
+}
+
+.about-tech-icons {
+    display: flex;
+    gap: 1.2rem;
+    font-size: 2rem;
+    margin-top: 1.2rem;
+    color: var(--primary, #3b82f6);
+}
+
+.about-tech-icons span {
+    transition: transform 0.2s;
+    cursor: default;
+}
+
+.about-tech-icons span:hover {
+    transform: scale(1.18) rotate(-8deg);
+    color: var(--accent, #8b5cf6);
 }

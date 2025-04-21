@@ -65,8 +65,8 @@ const Header = () => {
                         e.preventDefault();
                         scrollToSection('home');
                     }}>
-                        <span className="logo-icon">&lt;/&gt;</span>
-                        <span className="logo-text">Muhammad Zulhilmi</span>
+                        {/* <span className="logo-icon">&lt;/&gt;</span> */}
+                        <span className="logo-text">Zulhilmi Rahmat</span>
                     </a>
                 </div>
 

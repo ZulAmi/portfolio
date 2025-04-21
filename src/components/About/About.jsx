@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import './About.css';
 
 const About = () => {
-    // Animation variants
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
@@ -31,63 +30,72 @@ const About = () => {
         <section id="about">
             <motion.div
                 className="about-container"
-                // Remove animations temporarily for testing 
-                // variants={containerVariants}
-                // initial="hidden"
-                // whileInView="visible"
-                initial={{ opacity: 1 }} // Force visibility
-            // viewport={{ once: true, amount: 0.1 }}
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
             >
                 <div className="about-content">
                     <motion.div className="about-text" variants={itemVariants}>
-                        <div style={{ marginBottom: '1.5rem' }}>
-                            <span className="about-section-title">About</span>
-                        </div>
+                        <span className="about-section-title">About Me</span>
                         <h2 className="heading">
-                            Professional Background
+                            Your Next <span className="highlight">Front-End Innovator</span>
                             <div className="heading-underline"></div>
                         </h2>
                         <p className="paragraph">
-                            I'm a <span className="highlight">full-stack developer</span> with extensive experience crafting responsive,
-                            high-performance web applications. My approach combines technical expertise with creative
-                            problem-solving to deliver exceptional user experiences.
+                            Hello! I’m a <span className="highlight">full-stack developer</span> passionate about building digital experiences that delight users and drive business results. My approach blends technical mastery with a creative mindset, ensuring every project is both robust and visually engaging.
                         </p>
-                        <p className="paragraph">
-                            With a strong foundation in the JavaScript ecosystem, I specialize in building modern applications
-                            using React and Next.js. My backend proficiency includes creating robust APIs and managing database
-                            architectures that scale efficiently with business needs.
-                        </p>
-                        <p className="paragraph">
-                            I'm committed to continuous learning and keeping pace with emerging technologies to implement
-                            best practices in software development.
-                        </p>
-                    </motion.div>
-                    <motion.div variants={itemVariants}>
-                        <div style={{ marginBottom: '2rem' }}>
-                            <span className="about-section-title">Expertise</span>
-                            <h3 className="heading subheading">
-                                Technical Skills
-                                <div className="heading-underline"></div>
-                            </h3>
+                        <div className="about-quick-facts">
+                            <div>
+                                <span className="fact-label">Experience:</span>
+                                <span className="fact-value">5+ years</span>
+                            </div>
+                            <div>
+                                <span className="fact-label">Projects Delivered:</span>
+                                <span className="fact-value">30+</span>
+                            </div>
+                            <div>
+                                <span className="fact-label">Remote Ready:</span>
+                                <span className="fact-value">Yes</span>
+                            </div>
                         </div>
-                        <motion.div className="skills-list" variants={containerVariants}>
-                            <motion.div className="skill-card" whileHover={{ y: -5 }} variants={itemVariants}>
-                                <h3 className="skill-heading">Frontend</h3>
-                                <p className="skill-text">React, Next.js, TypeScript, Redux</p>
-                            </motion.div>
-                            <motion.div className="skill-card" whileHover={{ y: -5 }} variants={itemVariants}>
-                                <h3 className="skill-heading">Backend</h3>
-                                <p className="skill-text">Node.js, Express, MongoDB, PostgreSQL</p>
-                            </motion.div>
-                            <motion.div className="skill-card" whileHover={{ y: -5 }} variants={itemVariants}>
-                                <h3 className="skill-heading">DevOps</h3>
-                                <p className="skill-text">Git, Docker, AWS, CI/CD</p>
-                            </motion.div>
-                            <motion.div className="skill-card" whileHover={{ y: -5 }} variants={itemVariants}>
-                                <h3 className="skill-heading">Design</h3>
-                                <p className="skill-text">Figma, Tailwind CSS, Responsive Design</p>
-                            </motion.div>
-                        </motion.div>
+                        <p className="paragraph">
+                            I thrive in collaborative, agile teams and love turning complex problems into elegant solutions. My code is clean, scalable, and always user-focused.
+                        </p>
+                        <div className="about-cta">
+                            <a href="#contact" className="about-hire-btn">
+                                Let’s Build Something Great Together
+                            </a>
+                        </div>
+                    </motion.div>
+                    <motion.div className="about-expertise" variants={itemVariants}>
+                        <span className="about-section-title">Core Strengths</span>
+                        <h3 className="heading subheading">
+                            What Sets Me Apart
+                            <div className="heading-underline"></div>
+                        </h3>
+                        <ul className="about-strengths-list">
+                            <li>
+                                <strong>Pixel-Perfect UI:</strong> Meticulous attention to detail with modern frameworks (React, Next.js, Tailwind).
+                            </li>
+                            <li>
+                                <strong>Performance-Driven:</strong> Optimized code for speed, SEO, and accessibility.
+                            </li>
+                            <li>
+                                <strong>Team Player:</strong> Excellent communicator, mentor, and collaborator.
+                            </li>
+                            <li>
+                                <strong>Continuous Learner:</strong> Always up-to-date with the latest tech and best practices.
+                            </li>
+                        </ul>
+                        <div className="about-tech-icons">
+                            <span title="React">⚛️</span>
+                            <span title="Next.js">▲</span>
+                            <span title="TypeScript">📘</span>
+                            <span title="Node.js">🟢</span>
+                            <span title="Figma">🎨</span>
+                            <span title="AWS">☁️</span>
+                        </div>
                     </motion.div>
                 </div>
             </motion.div>
