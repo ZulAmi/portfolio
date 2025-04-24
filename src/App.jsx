@@ -11,27 +11,15 @@ import Footer from './components/Footer/Footer';
 
 function App() {
     return (
-        <div className="App professional-theme">
+        <div className="App">
             <Header />
-            <main className="main-content">
-                <section id="hero-section" className="section hero-section">
-                    <Hero />
-                </section>
-                <section id="about-section" className="section about-section">
-                    <About />
-                </section>
-                <section id="skills-section" className="section skills-section">
-                    <Skills />
-                </section>
-                <section id="projects-section" className="section projects-section">
-                    <Projects />
-                </section>
-                <section id="experience-section" className="section experience-section">
-                    <Experience />
-                </section>
-                <section id="contact-section" className="section contact-section">
-                    <Contact />
-                </section>
+            <main>
+                <section id="hero" className="section"><Hero /></section>
+                <section id="about" className="section"><About /></section>
+                <section id="skills" className="section"><Skills /></section>
+                <section id="projects" className="section"><Projects /></section>
+                <section id="experience" className="section"><Experience /></section>
+                <section id="contact" className="section"><Contact /></section>
             </main>
             <Footer />
         </div>

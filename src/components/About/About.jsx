@@ -27,14 +27,7 @@ const About = () => {
     };
 
     return (
-        <section id="about" style={{
-            border: '5px solid red',
-            minHeight: '400px',
-            background: '#ffffff',
-            padding: '50px',
-            margin: '20px 0'
-        }}>
-            <h1>ABOUT SECTION TEST</h1>
+        <section id="about">
             <motion.div
                 className="about-container"
                 variants={containerVariants}
