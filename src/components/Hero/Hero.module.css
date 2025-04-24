@@ -1,3 +1,4 @@
+/* Monochromatic Hero Section with White Background */
 .heroSection {
     min-height: 80vh;
     display: flex;
@@ -6,7 +7,7 @@
     align-items: center;
     position: relative;
     padding: 4rem 2rem;
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    background: #ffffff;
     overflow: hidden;
 }
 
@@ -15,7 +16,7 @@
     position: absolute;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle at center, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+    background: radial-gradient(circle at center, rgba(37, 99, 235, 0.05) 0%, transparent 50%);
     animation: rotate 20s linear infinite;
 }
 
@@ -50,11 +51,12 @@
     font-weight: 800;
     line-height: 1.2;
     margin-bottom: 1.5rem;
-    color: #f8fafc;
+    color: #1f2937;
+    /* Dark text for white background */
 }
 
 .gradientText {
-    background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -63,7 +65,8 @@
 
 .subtitle {
     font-size: 1.5rem;
-    color: #94a3b8;
+    color: #4b5563;
+    /* Darker gray for better contrast */
     margin-bottom: 2rem;
     line-height: 1.6;
 }
@@ -86,24 +89,30 @@
 }
 
 .primaryButton {
-    background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+    background: #2563eb;
+    /* Solid primary blue */
     color: white;
-    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
 }
 
 .primaryButton:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+    background: #1d4ed8;
+    /* Slightly darker on hover */
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
 }
 
 .secondaryButton {
     background: transparent;
-    color: #f8fafc;
-    border: 2px solid #6366f1;
+    color: #2563eb;
+    /* Blue text */
+    border: 2px solid #2563eb;
+    /* Blue border */
 }
 
 .secondaryButton:hover {
-    background: rgba(99, 102, 241, 0.1);
+    background: rgba(37, 99, 235, 0.05);
+    /* Very light blue background */
     transform: translateY(-2px);
 }
 
@@ -128,8 +137,8 @@
     overflow: hidden;
     position: relative;
     z-index: 2;
-    border: 4px solid #6366f1;
-    box-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
+    border: 4px solid #2563eb;
+    box-shadow: 0 0 30px rgba(37, 99, 235, 0.2);
 }
 
 .profileImage img {
@@ -142,7 +151,7 @@
     position: absolute;
     width: 200px;
     height: 200px;
-    border: 2px solid rgba(99, 102, 241, 0.3);
+    border: 2px solid rgba(37, 99, 235, 0.2);
     border-radius: 50%;
     top: 50%;
     left: 50%;
@@ -154,7 +163,7 @@
     position: absolute;
     width: 150px;
     height: 150px;
-    border: 2px solid rgba(168, 85, 247, 0.3);
+    border: 2px solid rgba(37, 99, 235, 0.15);
     transform: rotate(45deg);
     top: 50%;
     left: 50%;

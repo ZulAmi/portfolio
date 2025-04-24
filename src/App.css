@@ -1,23 +1,23 @@
 :root {
     /* Professional color palette - Modern and sophisticated */
-    --primary: #3b82f6;
-    --primary-dark: #2563eb;
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
     --primary-light: #60a5fa;
-    --secondary: #10b981;
-    --secondary-dark: #059669;
-    --accent: #8b5cf6;
-    --accent-dark: #7c3aed;
-    --dark: #111827;
-    --dark-light: #1f2937;
-    --light: #f9fafb;
-    --light-dark: #f3f4f6;
-    --text-primary: #f9fafb;
-    --text-secondary: #94a3b8;
-    --text-light: #9ca3af;
-    --success: #10b981;
-    --warning: #f59e0b;
-    --error: #ef4444;
-    --border: #1f2937;
+    --secondary: #1e293b;
+    --secondary-dark: #0f172a;
+    --accent: #1e40af;
+    --accent-dark: #1e3a8a;
+    --dark: #333333;
+    --dark-light: #666666;
+    --light: #ffffff;
+    --light-dark: #f8f8f8;
+    --text-primary: #1f2937;
+    --text-secondary: #4b5563;
+    --text-light: #6b7280;
+    --success: #0f766e;
+    --warning: #854d0e;
+    --error: #b91c1c;
+    --border: #e5e7eb;
 
     /* Enhanced spacing system */
     --space-2xs: 0.125rem;
@@ -474,10 +474,10 @@ main {
 
 /* Professional theme for a frontend developer portfolio */
 .professional-theme {
-    background: linear-gradient(120deg, #181824 0%, #232946 100%);
+    background: #ffffff !important;
     min-height: 100vh;
     font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-    color: #f4f4f5;
+    color: var(--text-primary);
 }
 
 .main-content {
@@ -488,6 +488,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 0;
+    background: #ffffff !important;
 }
 
 .section {
@@ -500,6 +501,16 @@ main {
     position: relative;
     z-index: 1;
     background: none;
+    background: #ffffff !important;
+    color: var(--text-primary);
+    border-bottom: 1px solid #f0f0f0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    outline: none !important;
 }
 
 .hero-section {
@@ -511,6 +522,8 @@ main {
     width: 100vw;
     max-width: 1600px;
     margin: 0 auto;
+    background: #f8f8f8 !important;
+    border-bottom: 1px solid #eeeeee !important;
 }
 
 .about-section,
@@ -523,6 +536,16 @@ main {
     border-radius: 0;
     box-shadow: none;
     background: rgba(34, 34, 56, 0.92);
+    background: #ffffff !important;
+    color: var(--text-primary);
+    border-bottom: 1px solid #f0f0f0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    outline: none !important;
 }
 
 @media (max-width: 900px) {
@@ -602,14 +625,19 @@ main {
 .contact-section {
     margin-top: 0 !important;
     margin-bottom: 0 !important;
-    padding-top: 24px !important;
-    padding-bottom: 24px !important;
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
     border-radius: 0 !important;
     box-shadow: none !important;
-    background: linear-gradient(120deg, var(--dark, #181824) 60%, var(--dark-light, #232946) 100%) !important;
-    /* Remove any border or outline that could cause a white bar */
-    border: none !important;
+    background: #ffffff !important;
+    color: var(--text-primary);
+    border-bottom: 1px solid #f0f0f0 !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-top: none !important;
     outline: none !important;
+    position: relative;
+    z-index: 1;
 }
 
 /* Remove any after pseudo-element that could create a divider */
@@ -624,55 +652,14 @@ main {
     content: none !important;
     background: none !important;
     height: 0 !important;
-}
-
-/* Remove background from .section if you want to use only the section-specific backgrounds */
-.section {
-    background: linear-gradient(120deg, var(--dark, #181824) 60%, var(--dark-light, #232946) 100%) !important;
 }
 
 /* Ensure the body and html have no background that could peek through */
 body,
 html {
     background: linear-gradient(120deg, var(--dark, #181824) 0%, var(--dark-light, #232946) 100%) !important;
-}
-
-/* Remove all vertical spacing between sections for a compact look */
-.section,
-.hero-section,
-.about-section,
-.skills-section,
-.projects-section,
-.experience-section,
-.contact-section {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-    padding-top: 24px !important;
-    padding-bottom: 24px !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    background: rgba(34, 34, 56, 0.92);
-    border: none !important;
-    outline: none !important;
-}
-
-/* Remove background from .section if you want to use only the section-specific backgrounds */
-.section {
-    background: none !important;
-}
-
-/* Remove any after pseudo-element that could create a divider */
-.section:not(:last-child)::after,
-.hero-section:not(:last-child)::after,
-.about-section:not(:last-child)::after,
-.skills-section:not(:last-child)::after,
-.projects-section:not(:last-child)::after,
-.experience-section:not(:last-child)::after,
-.contact-section:not(:last-child)::after {
-    display: none !important;
-    content: none !important;
-    background: none !important;
-    height: 0 !important;
+    background: #ffffff !important;
+    color: var(--text-primary);
 }
 
 /* Responsive: keep sections compact on mobile too */
@@ -692,4 +679,101 @@ html {
         padding-top: 8px !important;
         padding-bottom: 8px !important;
     }
+}
+
+.section-title,
+.skills-title,
+.experience-title,
+.about-title,
+.contact-title,
+.heading {
+    color: var(--secondary-dark);
+}
+
+.about-section-title,
+.skills-section-title,
+.heading .highlight {
+    color: var(--primary);
+}
+
+.heading-underline {
+    background: var(--primary);
+}
+
+.about-expertise,
+.skill-card,
+.project-card,
+.experience-card {
+    background: #ffffff;
+    border: 1px solid #eaeaea;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.skill-card:hover,
+.project-card:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+    border-color: var(--primary-light);
+}
+
+.paragraph {
+    color: var(--text-secondary);
+}
+
+.fact-label {
+    color: var(--primary);
+}
+
+.fact-value {
+    color: var(--text-primary);
+}
+
+.about-hire-btn {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.about-hire-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.about-tech-icons span,
+.skill-icon {
+    color: var(--primary);
+}
+
+.about-tech-icons span:hover,
+.skill-card:hover .skill-icon {
+    color: var(--accent);
+}
+
+.contact-professional-form input,
+.contact-professional-form textarea {
+    background: #f8f8f8;
+    border: 1px solid #e5e7eb;
+    color: var(--text-primary);
+}
+
+.contact-professional-form input:focus,
+.contact-professional-form textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+}
+
+.professional-send {
+    background: var(--primary);
+    color: white;
+}
+
+.professional-send.sent {
+    background: var(--success);
+}
+
+.about-strengths-list {
+    color: var(--text-secondary);
+}
+
+.about-strengths-list strong {
+    color: var(--primary);
 }
